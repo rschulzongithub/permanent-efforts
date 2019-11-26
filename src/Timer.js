@@ -22,14 +22,14 @@ export default function Main() {
   }
 
   return (
-    <MainStyled>
+    <TimerStyled>
       <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
-      <StartButton onClick={() => setCounting(!counting)}></StartButton>
-    </MainStyled>
+      <StartButton onClick={() => setCounting(!counting)}>GO!</StartButton>
+    </TimerStyled>
   )
 }
 
-const MainStyled = styled.div`
+const TimerStyled = styled.div`
   display: grid;
   align-content: center;
   justify-items: center;
