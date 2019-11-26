@@ -11,13 +11,14 @@ export default function Main() {
   }, [seconds, counting])
 
   function countDownTimeFormat(seconds) {
-    const minutes = Math.floor(seconds / 60)
-      .toString()
-      .padStart(2, '0')
-    const restSeconds = (seconds - minutes * 60).toString().padEnd(2, '0')
+    const minutes = Math.floor(seconds / 60).toString()
+
+    const restSeconds = (seconds - minutes * 60).toString()
 
     return `
-    ${minutes}:${restSeconds}
+    ${minutes < 10 ? `0${minutes}` : minutes}:${
+      restSeconds < 10 ? `0${restSeconds}` : restSeconds
+    }
     `
   }
 
