@@ -8,6 +8,6 @@ const StyledStartBtn = styled.button`
   height: 50px;
 `
 
-export default function StartButton() {
-  return <StyledStartBtn>GO!</StyledStartBtn>
+export default function StartButton({ onClick }) {
+  return <StyledStartBtn onClick={onClick}>GO!</StyledStartBtn>
 }
