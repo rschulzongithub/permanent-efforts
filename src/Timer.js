@@ -3,11 +3,13 @@ import styled from 'styled-components/macro'
 import StartButton from './StartButton'
 
 export default function Main() {
-  const [seconds, setSeconds] = useState(120)
+  const [seconds, setSeconds] = useState(5)
   const [counting, setCounting] = useState(false)
 
   useEffect(() => {
-    counting && setTimeout(() => setSeconds(seconds - 1), 1000)
+    seconds === 0
+      ? clearTimeout()
+      : counting && setTimeout(() => setSeconds(seconds - 1), 1000)
   }, [seconds, counting])
 
   function countDownTimeFormat(seconds) {
