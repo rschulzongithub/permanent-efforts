@@ -26,15 +26,24 @@ export default function Main() {
 
   return (
     <TimerStyled>
-      <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
       {seconds === 0 ? (
-        <div>DONE!</div>
+        <TimerFinishedLine>FINISHED!</TimerFinishedLine>
       ) : (
-        <StartButton onClick={() => setCounting(!counting)}>START</StartButton>
+        <>
+          <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
+          <StartButton onClick={() => setCounting(!counting)}>
+            START
+          </StartButton>
+        </>
       )}
     </TimerStyled>
   )
 }
+
+const TimerFinishedLine = styled.div`
+  font-size: 3em;
+  color: #e3d9ca;
+`
 
 const TimerStyled = styled.div`
   display: grid;
