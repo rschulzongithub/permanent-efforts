@@ -27,7 +27,11 @@ export default function Main() {
   return (
     <TimerStyled>
       <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
-      <StartButton onClick={() => setCounting(!counting)}>GO!</StartButton>
+      {seconds === 0 ? (
+        <div>DONE!</div>
+      ) : (
+        <StartButton onClick={() => setCounting(!counting)}>START</StartButton>
+      )}
     </TimerStyled>
   )
 }
