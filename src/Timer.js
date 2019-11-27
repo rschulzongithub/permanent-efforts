@@ -3,31 +3,47 @@ import styled from 'styled-components/macro'
 import StartButton from './StartButton'
 
 export default function Main() {
-  const [seconds, setSeconds] = useState(120)
+  const [seconds, setSeconds] = useState(5)
   const [counting, setCounting] = useState(false)
 
   useEffect(() => {
-    counting && setTimeout(() => setSeconds(seconds - 1), 1000)
+    seconds === 0
+      ? clearTimeout()
+      : counting && setTimeout(() => setSeconds(seconds - 1), 1000)
   }, [seconds, counting])
 
   function countDownTimeFormat(seconds) {
-    const minutes = Math.floor(seconds / 60)
-      .toString()
-      .padStart(2, '0')
-    const restSeconds = (seconds - minutes * 60).toString().padEnd(2, '0')
+    const minutes = Math.floor(seconds / 60).toString()
+
+    const restSeconds = (seconds - minutes * 60).toString()
 
     return `
-    ${minutes}:${restSeconds}
+    ${minutes < 10 ? `0${minutes}` : minutes}:${
+      restSeconds < 10 ? `0${restSeconds}` : restSeconds
+    }
     `
   }
 
   return (
     <TimerStyled>
-      <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
-      <StartButton onClick={() => setCounting(!counting)}>GO!</StartButton>
+      {seconds === 0 ? (
+        <TimerFinishedLine>FINISHED!</TimerFinishedLine>
+      ) : (
+        <>
+          <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
+          <StartButton onClick={() => setCounting(!counting)}>
+            START
+          </StartButton>
+        </>
+      )}
     </TimerStyled>
   )
 }
+
+const TimerFinishedLine = styled.div`
+  font-size: 3em;
+  color: #e3d9ca;
+`
 
 const TimerStyled = styled.div`
   display: grid;
