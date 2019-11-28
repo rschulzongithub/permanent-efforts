@@ -5,9 +5,11 @@ import PlayBtn from './icons8-spielen-100.png'
 import PauseBtn from './icons8-pause-100.png'
 
 export default function Timer() {
-  const [seconds, setSeconds] = useState(10)
+  const [seconds, setSeconds] = useState(125)
   const [counting, setCounting] = useState(false)
   const [initialTimer, setInitialTimer] = useState(false)
+  const [userMin, setUserMin] = useState('')
+  const [userSec, setUserSec] = useState('')
 
   useEffect(() => {
     seconds === 0
@@ -43,6 +45,19 @@ export default function Timer() {
       ) : (
         <>
           <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
+          <TimerDuration
+            onInput={min => setUserMin(min.target.value)}
+            type="text"
+            placeholder="Min"
+          ></TimerDuration>
+          <TimerDuration
+            onInput={sec => setUserSec(sec.target.value)}
+            type="text"
+            placeholder="Sec"
+          ></TimerDuration>
+          <TimeSubmitBtn onClick={() => setSeconds(userMin * 60 + userSec)}>
+            &rarr;
+          </TimeSubmitBtn>
           <StartButton onClick={() => setCounting(!counting)}>
             {counting ? (
               <PlayImgs
@@ -95,6 +110,17 @@ const TimerFormat = styled.p`
   font-size: 5em;
   color: #e3d9ca;
 `
+const TimerDuration = styled.input`
+  height: 50px;
+  width: 50px;
+  font-size: 1.5em;
+`
+const TimeSubmitBtn = styled.button`
+  height: 50px;
+  width: 50px;
+  font-size: 1.5em;
+`
+
 const PlayImgs = styled.img`
   height: 50px;
   width: 50px;
