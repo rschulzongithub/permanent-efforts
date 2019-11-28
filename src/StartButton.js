@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export default styled.button`
-  background: #95a792;
-  border-radius: 40px;
-  width: 180px;
-  height: 70px;
-  color: #e3d9ca;
-  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  box-shadow: 1px 1px 10px #e3d9ca;
 `
