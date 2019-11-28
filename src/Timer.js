@@ -4,23 +4,19 @@ import StartButton from './StartButton'
 import PlayBtn from './icons8-spielen-100.png'
 import PauseBtn from './icons8-pause-100.png'
 
-export default function Main() {
+export default function Timer() {
   const [seconds, setSeconds] = useState(10)
   const [counting, setCounting] = useState(false)
-  const [returnToTimer, setReturnToTimer] = useState(false)
+  const [initialTimer, setInitialTimer] = useState(false)
 
   useEffect(() => {
     seconds === 0
-      ? stopCountdown(counting)
+      ? clearTimeout()
       : counting && setTimeout(() => setSeconds(seconds - 1), 1000)
   }, [seconds, counting])
 
-  function stopCountdown(counting) {
-    clearTimeout()
-  }
-
   function resetCountdown() {
-    setReturnToTimer(!returnToTimer)
+    setInitialTimer(!initialTimer)
     setSeconds(10)
     setCounting(!counting)
   }
@@ -38,49 +34,50 @@ export default function Main() {
   }
 
   return (
-    <TimerStyled>
+    <TimerScreenStyled>
       {seconds === 0 ? (
         <>
-          <TimerFinishedLine>FINISHED!</TimerFinishedLine>
-          <TimerFinishedOk onClick={() => resetCountdown()}>OK</TimerFinishedOk>
+          <TimerFinishedScreen>FINISHED!</TimerFinishedScreen>
+          <TimerReset onClick={() => resetCountdown()}>OK</TimerReset>
         </>
       ) : (
         <>
           <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
           <StartButton onClick={() => setCounting(!counting)}>
             {counting ? (
-              <PlayImg
+              <PlayImgs
                 alt=""
                 src={PauseBtn}
                 height="100px"
                 width="50px"
-              ></PlayImg>
+              ></PlayImgs>
             ) : (
-              <PlayImg
+              <PlayImgs
                 alt=""
                 src={PlayBtn}
                 height="100px"
                 width="50px"
-              ></PlayImg>
+              ></PlayImgs>
             )}
           </StartButton>
         </>
       )}
-    </TimerStyled>
+    </TimerScreenStyled>
   )
 }
 
-const PlayImg = styled.img`
-  height: 50px;
-  width: 50px;
+const TimerScreenStyled = styled.div`
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  height: 80vh;
 `
-
-const TimerFinishedLine = styled.div`
+const TimerFinishedScreen = styled.div`
   font-size: 3em;
   color: #e3d9ca;
 `
-
-const TimerFinishedOk = styled.button`
+const TimerReset = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,16 +91,11 @@ const TimerFinishedOk = styled.button`
   box-shadow: 1px 1px 30px #e3d9ca;
   margin-top: 80px;
 `
-
-const TimerStyled = styled.div`
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
-  height: 80vh;
-`
-
 const TimerFormat = styled.p`
   font-size: 5em;
   color: #e3d9ca;
+`
+const PlayImgs = styled.img`
+  height: 50px;
+  width: 50px;
 `
