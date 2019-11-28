@@ -50,17 +50,21 @@ export default function Timer() {
       ) : (
         <>
           <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
-          <TimerDuration
-            onInput={event => setUserMin(event.target.value)}
-            type="number"
-            placeholder="Min"
-          ></TimerDuration>
-          <TimerDuration
-            onInput={event => setUserSec(event.target.value)}
-            type="number"
-            placeholder="Sec"
-          ></TimerDuration>
-          <TimeSubmitBtn onClick={calcSeconds}>&rarr;</TimeSubmitBtn>
+          {!counting && (
+            <DurationSetStyle>
+              <TimerDuration
+                onInput={event => setUserMin(event.target.value)}
+                type="number"
+                placeholder="Min"
+              ></TimerDuration>
+              <TimerDuration
+                onInput={event => setUserSec(event.target.value)}
+                type="number"
+                placeholder="Sec"
+              ></TimerDuration>
+              <TimeSubmitBtn onClick={calcSeconds}>&rarr;</TimeSubmitBtn>
+            </DurationSetStyle>
+          )}
           <StartButton onClick={() => setCounting(!counting)}>
             {counting ? (
               <PlayImgs
@@ -89,7 +93,8 @@ const TimerScreenStyled = styled.div`
   align-content: center;
   justify-items: center;
   background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
-  height: 80vh;
+  height: 100vh;
+  overflow: hidden;
 `
 const TimerFinishedScreen = styled.div`
   font-size: 3em;
@@ -113,14 +118,18 @@ const TimerFormat = styled.p`
   font-size: 5em;
   color: #e3d9ca;
 `
+const DurationSetStyle = styled.div`
+  display: flex;
+  gap: 10px;
+`
 const TimerDuration = styled.input`
   height: 50px;
   width: 50px;
   font-size: 1.5em;
 `
 const TimeSubmitBtn = styled.button`
-  height: 50px;
-  width: 50px;
+  height: 58px;
+  width: 58px;
   font-size: 1.5em;
 `
 
