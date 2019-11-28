@@ -8,8 +8,8 @@ export default function Timer() {
   const [seconds, setSeconds] = useState(125)
   const [counting, setCounting] = useState(false)
   const [initialTimer, setInitialTimer] = useState(false)
-  const [userMin, setUserMin] = useState('')
-  const [userSec, setUserSec] = useState('')
+  const [userMin, setUserMin] = useState(null)
+  const [userSec, setUserSec] = useState(null)
 
   useEffect(() => {
     seconds === 0
@@ -34,6 +34,11 @@ export default function Timer() {
     }
     `
   }
+  function calcSeconds() {
+    const min = Number(userMin)
+    const sec = Number(userSec)
+    setSeconds(min * 60 + sec)
+  }
 
   return (
     <TimerScreenStyled>
@@ -46,18 +51,16 @@ export default function Timer() {
         <>
           <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
           <TimerDuration
-            onInput={min => setUserMin(min.target.value)}
-            type="text"
+            onInput={event => setUserMin(event.target.value)}
+            type="number"
             placeholder="Min"
           ></TimerDuration>
           <TimerDuration
-            onInput={sec => setUserSec(sec.target.value)}
-            type="text"
+            onInput={event => setUserSec(event.target.value)}
+            type="number"
             placeholder="Sec"
           ></TimerDuration>
-          <TimeSubmitBtn onClick={() => setSeconds(userMin * 60 + userSec)}>
-            &rarr;
-          </TimeSubmitBtn>
+          <TimeSubmitBtn onClick={calcSeconds}>&rarr;</TimeSubmitBtn>
           <StartButton onClick={() => setCounting(!counting)}>
             {counting ? (
               <PlayImgs
