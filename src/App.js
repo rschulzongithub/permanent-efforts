@@ -11,7 +11,7 @@ function App() {
       <Grid>
         <Header />
         <Timer></Timer>
-        <Footer />
+        <Footer></Footer>
       </Grid>
     </div>
   )
