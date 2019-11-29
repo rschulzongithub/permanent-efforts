@@ -5,9 +5,11 @@ import PlayBtn from './icons8-spielen-100.png'
 import PauseBtn from './icons8-pause-100.png'
 
 export default function Timer() {
-  const [seconds, setSeconds] = useState(10)
+  const [seconds, setSeconds] = useState(125)
   const [counting, setCounting] = useState(false)
   const [initialTimer, setInitialTimer] = useState(false)
+  const [userMin, setUserMin] = useState(null)
+  const [userSec, setUserSec] = useState(null)
 
   useEffect(() => {
     seconds === 0
@@ -32,6 +34,11 @@ export default function Timer() {
     }
     `
   }
+  function calcSeconds() {
+    const min = Number(userMin)
+    const sec = Number(userSec)
+    setSeconds(min * 60 + sec)
+  }
 
   return (
     <TimerScreenStyled>
@@ -43,6 +50,21 @@ export default function Timer() {
       ) : (
         <>
           <TimerFormat>{countDownTimeFormat(seconds)}</TimerFormat>
+          {!counting && (
+            <DurationSetStyle>
+              <TimerDuration
+                onInput={event => setUserMin(event.target.value)}
+                type="number"
+                placeholder="Min"
+              ></TimerDuration>
+              <TimerDuration
+                onInput={event => setUserSec(event.target.value)}
+                type="number"
+                placeholder="Sec"
+              ></TimerDuration>
+              <TimeSubmitBtn onClick={calcSeconds}>&rarr;</TimeSubmitBtn>
+            </DurationSetStyle>
+          )}
           <StartButton onClick={() => setCounting(!counting)}>
             {counting ? (
               <PlayImgs
@@ -71,7 +93,8 @@ const TimerScreenStyled = styled.div`
   align-content: center;
   justify-items: center;
   background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
-  height: 80vh;
+  height: 100vh;
+  overflow: hidden;
 `
 const TimerFinishedScreen = styled.div`
   font-size: 3em;
@@ -95,6 +118,21 @@ const TimerFormat = styled.p`
   font-size: 5em;
   color: #e3d9ca;
 `
+const DurationSetStyle = styled.div`
+  display: flex;
+  gap: 10px;
+`
+const TimerDuration = styled.input`
+  height: 50px;
+  width: 50px;
+  font-size: 1.5em;
+`
+const TimeSubmitBtn = styled.button`
+  height: 58px;
+  width: 58px;
+  font-size: 1.5em;
+`
+
 const PlayImgs = styled.img`
   height: 50px;
   width: 50px;
