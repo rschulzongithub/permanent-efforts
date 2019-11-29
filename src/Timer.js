@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import StartButton from './StartButton'
 import PlayBtn from './icons8-spielen-100.png'
 import PauseBtn from './icons8-pause-100.png'
+import Ding from './dong-1.mp3'
 
 export default function Timer() {
   const [seconds, setSeconds] = useState(125)
@@ -45,6 +46,7 @@ export default function Timer() {
       {seconds === 0 ? (
         <>
           <TimerFinishedScreen>FINISHED!</TimerFinishedScreen>
+          <audio src={Ding}></audio>
           <TimerReset onClick={() => resetCountdown()}>OK</TimerReset>
         </>
       ) : (
