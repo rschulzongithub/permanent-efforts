@@ -6,11 +6,13 @@ import ConstructorIcon from './construction-icon.svg'
 export default function Footer() {
   const Navigation = styled.nav`
     display: grid;
+    height: 48px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     grid-auto-flow: column;
     grid-template-columns: repeat(4, auto);
     background: linear-gradient(45deg, #92a5a1 0%, #596c68 100%);
-    border: 2px solid black;
-    border-radius: 10px;
   `
   const NavIcon = styled.button`
     background: transparent;

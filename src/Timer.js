@@ -94,9 +94,8 @@ const TimerScreenStyled = styled.div`
   display: grid;
   align-content: center;
   justify-items: center;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
   height: 100vh;
-  overflow: hidden;
+  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
 `
 const TimerFinishedScreen = styled.div`
   font-size: 3em;
@@ -130,8 +129,8 @@ const TimerDuration = styled.input`
   font-size: 1.5em;
 `
 const TimeSubmitBtn = styled.button`
-  height: 58px;
-  width: 58px;
+  height: 50px;
+  width: 50px;
   font-size: 1.5em;
 `
 
