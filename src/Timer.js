@@ -111,6 +111,7 @@ const TimerScreenStyled = styled.div`
   justify-items: center;
   height: 100vh;
   background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  margin-bottom: 48px;
 `
 const TimerFinishedScreen = styled.div`
   font-size: 3em;
