@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Grid from './Grid'
 import Header from './Header'
@@ -16,10 +16,14 @@ function App() {
       <AppStyled className="App">
         <Grid>
           <Header />
-          <Link to="/">Timer</Link>
-          <Timer />
-          <Link to="/">Construction</Link>
-          <DestrThoughts />
+          <Switch>
+            <Route exact path="/">
+              <Timer />
+            </Route>
+            <Route path="/constructor">
+              <DestrThoughts />
+            </Route>
+          </Switch>
           <Footer />
         </Grid>
       </AppStyled>
