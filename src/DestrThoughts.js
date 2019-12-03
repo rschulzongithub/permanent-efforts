@@ -5,15 +5,30 @@ import NegThoughts from './Thoughts.json'
 export default function DestrThoughts() {
   const [newThought, setNewThought] = useState(false)
 
+  function saveThought() {
+    setNewThought(!newThought)
+  }
+
   return (
     <ThoughtFrame>
       <>
-        <BtnAddThought onClick={() => setNewThought(!newThought)}>
-          +
-        </BtnAddThought>
-        {NegThoughts.map(({ destrThought }, index) => (
-          <ThoughtEl key={index}>{destrThought}</ThoughtEl>
-        ))}
+        {newThought === false ? (
+          <>
+            <BtnAddThought onClick={() => setNewThought(!newThought)}>
+              +
+            </BtnAddThought>
+
+            {NegThoughts.map(({ destrThought }, index) => (
+              <ThoughtEl key={index}>{destrThought}</ThoughtEl>
+            ))}
+          </>
+        ) : (
+          <>
+            <h3>Formulate your negative thought!</h3>
+            <input></input>
+            <button onClick={() => saveThought()}>Add thought</button>
+          </>
+        )}
       </>
     </ThoughtFrame>
   )
