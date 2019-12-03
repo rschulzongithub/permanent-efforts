@@ -16,6 +16,9 @@ export default function Footer() {
     background: linear-gradient(45deg, #92a5a1 0%, #596c68 100%);
   `
   const NavIcon = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: transparent;
   `
   const IconImg = styled.img`

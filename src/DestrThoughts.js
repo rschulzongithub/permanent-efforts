@@ -1,14 +1,20 @@
 import styled from 'styled-components/macro'
-import React from 'react'
+import React, { useState } from 'react'
 import NegThoughts from './Thoughts.json'
 
 export default function DestrThoughts() {
+  const [newThought, setNewThought] = useState(false)
+
   return (
     <ThoughtFrame>
-      <BtnAddThought>+</BtnAddThought>
-      {NegThoughts.map(({ destrThought }, index) => (
-        <ThoughtEl key={index}>{destrThought}</ThoughtEl>
-      ))}
+      <>
+        <BtnAddThought onClick={() => setNewThought(!newThought)}>
+          +
+        </BtnAddThought>
+        {NegThoughts.map(({ destrThought }, index) => (
+          <ThoughtEl key={index}>{destrThought}</ThoughtEl>
+        ))}
+      </>
     </ThoughtFrame>
   )
 }
