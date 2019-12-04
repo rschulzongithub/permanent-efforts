@@ -10,7 +10,8 @@ import DestrThoughts from './DestrThoughts'
 import Timer from './Timer'
 
 function App() {
-  const [createThought, setCreateThought] = useState(false)
+  const [createThought, setCreateThought] = useState(true)
+  const [deleteThought, setDeleteThought] = useState(false)
   const [thoughtsInput, setThoughtsInput] = useState('')
   const [newThoughts, setNewThoughts] = useState([])
 
@@ -27,10 +28,12 @@ function App() {
             <Route path="/constructor">
               <DestrThoughts
                 createThought={createThought}
+                deleteThought={deleteThought}
                 thoughtsInput={thoughtsInput}
                 newThoughts={newThoughts}
                 saveThought={saveThought}
                 setCreateThought={setCreateThought}
+                setDeleteThought={setDeleteThought}
                 addNewThought={addNewThought}
                 setNewThoughts={setNewThoughts}
                 setThoughtsInput={setThoughtsInput}

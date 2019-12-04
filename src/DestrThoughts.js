@@ -4,33 +4,49 @@ import NegThoughts from './Thoughts.json'
 
 export default function DestrThoughts({
   createThought,
+  deleteThought,
   thoughtsInput,
   newThoughts,
   saveThought,
   setCreateThought,
+  setDeleteThought,
   setThoughtsInput
 }) {
   return (
     <ThoughtFrame>
       <>
-        {createThought === false ? (
+        {createThought ? (
           <>
             <section>
               <BtnAddThought onClick={() => setCreateThought(!createThought)}>
                 +
               </BtnAddThought>
-              <BtnAddThought onClick={() => setCreateThought(!createThought)}>
+              <BtnAddThought onClick={() => setDeleteThought(!deleteThought)}>
                 -
               </BtnAddThought>
             </section>
 
-            {newThoughts.map(newThought => (
-              <ThoughtEl>{newThought.text}</ThoughtEl>
-            ))}
+            {newThoughts.map(newThought =>
+              deleteThought ? (
+                <ThoughtEl>
+                  {newThought.text}
+                  <button>X</button>
+                </ThoughtEl>
+              ) : (
+                <ThoughtEl>{newThought.text}</ThoughtEl>
+              )
+            )}
 
-            {NegThoughts.map(({ destrThought }, index) => (
-              <ThoughtEl key={index}>{destrThought}</ThoughtEl>
-            ))}
+            {NegThoughts.map(({ destrThought }, index) =>
+              deleteThought ? (
+                <ThoughtEl key={index}>
+                  {destrThought}
+                  <button>X</button>
+                </ThoughtEl>
+              ) : (
+                <ThoughtEl key={index}>{destrThought}</ThoughtEl>
+              )
+            )}
           </>
         ) : (
           <>
