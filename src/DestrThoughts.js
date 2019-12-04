@@ -82,4 +82,5 @@ const ThoughtEl = styled.div`
   border-radius: 20%;
   padding: 10px;
   font-size: 18px;
+  color: #e3d9ca;
 `
