@@ -3,20 +3,37 @@ import React, { useState } from 'react'
 import NegThoughts from './Thoughts.json'
 
 export default function DestrThoughts() {
-  const [newThought, setNewThought] = useState(false)
+  const [createThought, setCreateThought] = useState(false)
+  const [deleteThought, setDeleteThought] = useState(false)
+  const [thoughtsInput, setThoughtsInput] = useState('')
+  const [newThoughts, setNewThoughts] = useState([])
 
   function saveThought() {
-    setNewThought(!newThought)
+    setCreateThought(!createThought)
+    addNewThought()
+  }
+
+  function addNewThought() {
+    setNewThoughts([...newThoughts, { text: thoughtsInput }])
   }
 
   return (
     <ThoughtFrame>
       <>
-        {newThought === false ? (
+        {createThought === false ? (
           <>
-            <BtnAddThought onClick={() => setNewThought(!newThought)}>
-              +
-            </BtnAddThought>
+            <section>
+              <BtnAddThought onClick={() => setCreateThought(!createThought)}>
+                +
+              </BtnAddThought>
+              <BtnAddThought onClick={() => setCreateThought(!createThought)}>
+                -
+              </BtnAddThought>
+            </section>
+
+            {newThoughts.map(newThought => (
+              <ThoughtEl>{newThought.text}</ThoughtEl>
+            ))}
 
             {NegThoughts.map(({ destrThought }, index) => (
               <ThoughtEl key={index}>{destrThought}</ThoughtEl>
@@ -25,7 +42,10 @@ export default function DestrThoughts() {
         ) : (
           <>
             <h3>Formulate your negative thought!</h3>
-            <input></input>
+            <input
+              onInput={event => setThoughtsInput(event.target.value)}
+              value={thoughtsInput}
+            ></input>
             <button onClick={() => saveThought()}>Add thought</button>
           </>
         )}
