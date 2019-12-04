@@ -1,22 +1,37 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import StartButton from './StartButton'
 import PlayBtn from './icons8-spielen-100.png'
 import PauseBtn from './icons8-pause-100.png'
-import Ding from './dong-1.mp3'
+import soundPath from './dong-1.mp3'
 
 export default function Timer() {
-  const [seconds, setSeconds] = useState(125)
+  const [seconds, setSeconds] = useState(3)
   const [counting, setCounting] = useState(false)
   const [initialTimer, setInitialTimer] = useState(false)
   const [userMin, setUserMin] = useState(null)
   const [userSec, setUserSec] = useState(null)
+  const [timeoutId, setTimeoutId] = useState(null)
+
+  const audioEl = useRef()
 
   useEffect(() => {
-    seconds === 0
-      ? clearTimeout()
-      : counting && setTimeout(() => setSeconds(seconds - 1), 1000)
+    if (counting && seconds !== 0) {
+      const id = setTimeout(() => setSeconds(seconds - 1), 1000)
+      setTimeoutId(id)
+    } else {
+      clearTimeout(timeoutId)
+    }
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seconds, counting])
+
+  useEffect(() => {
+    seconds === 0 && audioEl.current.play()
+  }, [seconds])
 
   function resetCountdown() {
     setInitialTimer(!initialTimer)
@@ -43,10 +58,10 @@ export default function Timer() {
 
   return (
     <TimerScreenStyled>
+      <audio ref={audioEl} src={soundPath}></audio>
       {seconds === 0 ? (
         <>
           <TimerFinishedScreen>FINISHED!</TimerFinishedScreen>
-          <audio src={Ding}></audio>
           <TimerReset onClick={() => resetCountdown()}>OK</TimerReset>
         </>
       ) : (
@@ -96,6 +111,7 @@ const TimerScreenStyled = styled.div`
   justify-items: center;
   height: 100vh;
   background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  margin-bottom: 48px;
 `
 const TimerFinishedScreen = styled.div`
   font-size: 3em;
