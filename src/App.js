@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -10,6 +10,10 @@ import DestrThoughts from './DestrThoughts'
 import Timer from './Timer'
 
 function App() {
+  const [createThought, setCreateThought] = useState(false)
+  const [thoughtsInput, setThoughtsInput] = useState('')
+  const [newThoughts, setNewThoughts] = useState([])
+
   return (
     <Router>
       <GlobalStyle />
@@ -21,7 +25,16 @@ function App() {
               <Timer />
             </Route>
             <Route path="/constructor">
-              <DestrThoughts />
+              <DestrThoughts
+                createThought={createThought}
+                thoughtsInput={thoughtsInput}
+                newThoughts={newThoughts}
+                saveThought={saveThought}
+                setCreateThought={setCreateThought}
+                addNewThought={addNewThought}
+                setNewThoughts={setNewThoughts}
+                setThoughtsInput={setThoughtsInput}
+              />
             </Route>
           </Switch>
           <Footer />
@@ -29,6 +42,15 @@ function App() {
       </AppStyled>
     </Router>
   )
+
+  function saveThought() {
+    setCreateThought(!createThought)
+    addNewThought()
+  }
+
+  function addNewThought() {
+    setNewThoughts([...newThoughts, { text: thoughtsInput }])
+  }
 }
 
 export default App

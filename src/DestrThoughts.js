@@ -1,22 +1,15 @@
 import styled from 'styled-components/macro'
-import React, { useState } from 'react'
+import React from 'react'
 import NegThoughts from './Thoughts.json'
 
-export default function DestrThoughts() {
-  const [createThought, setCreateThought] = useState(false)
-  const [deleteThought, setDeleteThought] = useState(false)
-  const [thoughtsInput, setThoughtsInput] = useState('')
-  const [newThoughts, setNewThoughts] = useState([])
-
-  function saveThought() {
-    setCreateThought(!createThought)
-    addNewThought()
-  }
-
-  function addNewThought() {
-    setNewThoughts([...newThoughts, { text: thoughtsInput }])
-  }
-
+export default function DestrThoughts({
+  createThought,
+  thoughtsInput,
+  newThoughts,
+  saveThought,
+  setCreateThought,
+  setThoughtsInput
+}) {
   return (
     <ThoughtFrame>
       <>
@@ -79,7 +72,7 @@ const ThoughtEl = styled.div`
   width: 100%;
   border: 1px solid grey;
   box-shadow: 1px 1px 5px grey;
-  border-radius: 20%;
+  border-radius: 20px;
   padding: 10px;
   font-size: 18px;
   color: #e3d9ca;
