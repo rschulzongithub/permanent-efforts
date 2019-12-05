@@ -1,17 +1,20 @@
 import styled from 'styled-components/macro'
-import React from 'react'
-import NegThoughts from './Thoughts.json'
+import React, { useState } from 'react'
 
 export default function DestrThoughts({
   createThought,
   deleteThought,
+  btnX,
+  setBtnX,
+  change,
   thoughtsInput,
-  newThoughts,
+  thoughts,
   saveThought,
   setCreateThought,
   setDeleteThought,
-  setThoughtsInput
+  onAddThought
 }) {
+  const [newThought, setNewThought] = useState('')
   return (
     <ThoughtFrame>
       <>
@@ -26,25 +29,14 @@ export default function DestrThoughts({
               </BtnAddThought>
             </section>
 
-            {newThoughts.map(newThought =>
+            {thoughts.map((thought, index) =>
               deleteThought ? (
                 <ThoughtEl>
-                  {newThought.text}
-                  <button>X</button>
+                  {thought.destrThought}
+                  <button onClick={() => change(index)}>X</button>
                 </ThoughtEl>
               ) : (
-                <ThoughtEl>{newThought.text}</ThoughtEl>
-              )
-            )}
-
-            {NegThoughts.map(({ destrThought }, index) =>
-              deleteThought ? (
-                <ThoughtEl key={index}>
-                  {destrThought}
-                  <button>X</button>
-                </ThoughtEl>
-              ) : (
-                <ThoughtEl key={index}>{destrThought}</ThoughtEl>
+                <ThoughtEl>{thought.destrThought}</ThoughtEl>
               )
             )}
           </>
@@ -52,10 +44,12 @@ export default function DestrThoughts({
           <>
             <h3>Formulate your negative thought!</h3>
             <input
-              onInput={event => setThoughtsInput(event.target.value)}
-              value={thoughtsInput}
+              onChange={event => setNewThought(event.target.value)}
+              value={newThought}
             ></input>
-            <button onClick={() => saveThought()}>Add thought</button>
+            <button onClick={event => onAddThought(newThought)}>
+              Add thought
+            </button>
           </>
         )}
       </>
