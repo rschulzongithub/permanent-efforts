@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import StartButton from './StartButton'
-import PlayBtn from './icons8-spielen-100.png'
-import PauseBtn from './icons8-pause-100.png'
-import soundPath from './dong-1.mp3'
+import PlayBtn from './assets/icons8-spielen-100.png'
+import PauseBtn from './assets/icons8-pause-100.png'
+import soundPath from './assets/dong-1.mp3'
 
 export default function Timer() {
   const [seconds, setSeconds] = useState(3)
