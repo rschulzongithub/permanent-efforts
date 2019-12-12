@@ -8,11 +8,13 @@ import Footer from './Footer'
 import GlobalStyle from './GlobalStyles'
 import DestrThoughts from './DestrThoughts'
 import Timer from './Timer'
+import thoughtsData from './thoughts.json'
 
 function App() {
-  const [createThought, setCreateThought] = useState(false)
-  const [thoughtsInput, setThoughtsInput] = useState('')
-  const [newThoughts, setNewThoughts] = useState([])
+  const [createThought, setCreateThought] = useState(true)
+  const [deleteThought, setDeleteThought] = useState(false)
+  const [btnX, setBtnX] = useState(false)
+  const [thoughts, setThoughts] = useState(thoughtsData)
 
   return (
     <Router>
@@ -26,14 +28,18 @@ function App() {
             </Route>
             <Route path="/constructor">
               <DestrThoughts
-                createThought={createThought}
-                thoughtsInput={thoughtsInput}
-                newThoughts={newThoughts}
-                saveThought={saveThought}
                 setCreateThought={setCreateThought}
-                addNewThought={addNewThought}
-                setNewThoughts={setNewThoughts}
-                setThoughtsInput={setThoughtsInput}
+                setDeleteThought={setDeleteThought}
+                onAddThought={text => {
+                  setThoughts([{ destrThought: text }, ...thoughts])
+                  setCreateThought(!createThought)
+                }}
+                createThought={createThought}
+                deleteThought={deleteThought}
+                thoughts={thoughts}
+                setBtnX={setBtnX}
+                change={index => change(index)}
+                btnX={btnX}
               />
             </Route>
           </Switch>
@@ -43,13 +49,8 @@ function App() {
     </Router>
   )
 
-  function saveThought() {
-    setCreateThought(!createThought)
-    addNewThought()
-  }
-
-  function addNewThought() {
-    setNewThoughts([...newThoughts, { text: thoughtsInput }])
+  function change(indexToDelete) {
+    setThoughts(thoughts.filter((thought, index) => index !== indexToDelete))
   }
 }
 

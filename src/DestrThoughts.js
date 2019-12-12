@@ -1,51 +1,59 @@
 import styled from 'styled-components/macro'
-import React from 'react'
-import NegThoughts from './Thoughts.json'
+import React, { useState } from 'react'
 
 export default function DestrThoughts({
   createThought,
-  thoughtsInput,
-  newThoughts,
-  saveThought,
+  deleteThought,
+  change,
+  thoughts,
   setCreateThought,
-  setThoughtsInput
+  setDeleteThought,
+  onAddThought
 }) {
+  const [newThought, setNewThought] = useState('')
   return (
     <ThoughtFrame>
       <>
-        {createThought === false ? (
+        {createThought ? (
           <>
-            <section>
+            <CreDelSection>
               <BtnAddThought onClick={() => setCreateThought(!createThought)}>
                 +
               </BtnAddThought>
-              <BtnAddThought onClick={() => setCreateThought(!createThought)}>
+              <BtnAddThought onClick={() => setDeleteThought(!deleteThought)}>
                 -
               </BtnAddThought>
-            </section>
+            </CreDelSection>
 
-            {newThoughts.map(newThought => (
-              <ThoughtEl>{newThought.text}</ThoughtEl>
-            ))}
-
-            {NegThoughts.map(({ destrThought }, index) => (
-              <ThoughtEl key={index}>{destrThought}</ThoughtEl>
-            ))}
+            {thoughts.map((thought, index) =>
+              deleteThought ? (
+                <ThoughtEl>
+                  {thought.destrThought}
+                  <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>
+                </ThoughtEl>
+              ) : (
+                <ThoughtEl>{thought.destrThought}</ThoughtEl>
+              )
+            )}
           </>
         ) : (
           <>
             <h3>Formulate your negative thought!</h3>
             <input
-              onInput={event => setThoughtsInput(event.target.value)}
-              value={thoughtsInput}
+              onChange={event => setNewThought(event.target.value)}
+              value={newThought}
             ></input>
-            <button onClick={() => saveThought()}>Add thought</button>
+            <button onClick={event => onAddThought(newThought)}>
+              Add thought
+            </button>
           </>
         )}
       </>
     </ThoughtFrame>
   )
 }
+
+const CreDelSection = styled.section``
 
 const ThoughtFrame = styled.div`
   display: grid;
@@ -72,8 +80,22 @@ const ThoughtEl = styled.div`
   width: 100%;
   border: 1px solid grey;
   box-shadow: 1px 1px 5px grey;
-  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
   padding: 10px;
   font-size: 18px;
   color: #e3d9ca;
+  position: relative;
+`
+const DeleteBtn = styled.button`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  border: none;
+  color: #e3d9ca;
+  font-size: bold;
+
+  border-bottom-color: transparent;
 `

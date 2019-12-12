@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import TimeIcon from './timer-icon.svg'
-import ConstructorIcon from './construction-icon.svg'
+import TimeIcon from './assets/timer-icon.svg'
+import ConstructorIcon from './assets/construction-icon.svg'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
