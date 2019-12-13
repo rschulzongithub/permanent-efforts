@@ -109,7 +109,7 @@ const TimerScreenStyled = styled.div`
   display: grid;
   align-content: center;
   justify-items: center;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
   margin-bottom: 48px;
 `
