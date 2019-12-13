@@ -13,17 +13,17 @@ export default function DestrThoughts({
   const [newThought, setNewThought] = useState('')
   return (
     <ThoughtFrame>
-      <>
-        {createThought ? (
-          <>
-            <CreDelSection>
+      {createThought ? (
+        <>
+          <ThoughtsOverview>
+            <ButtonWrapper>
               <BtnAddThought onClick={() => setCreateThought(!createThought)}>
                 +
               </BtnAddThought>
               <BtnAddThought onClick={() => setDeleteThought(!deleteThought)}>
                 -
               </BtnAddThought>
-            </CreDelSection>
+            </ButtonWrapper>
 
             {thoughts.map((thought, index) =>
               deleteThought ? (
@@ -35,36 +35,41 @@ export default function DestrThoughts({
                 <ThoughtEl>{thought.destrThought}</ThoughtEl>
               )
             )}
-          </>
-        ) : (
-          <>
-            <h3>Formulate your negative thought!</h3>
-            <input
-              onChange={event => setNewThought(event.target.value)}
-              value={newThought}
-            ></input>
-            <button onClick={event => onAddThought(newThought)}>
-              Add thought
-            </button>
-          </>
-        )}
-      </>
+          </ThoughtsOverview>
+        </>
+      ) : (
+        <>
+          <h3>Formulate your negative thought!</h3>
+          <input
+            onChange={event => setNewThought(event.target.value)}
+            value={newThought}
+          ></input>
+          <button onClick={event => onAddThought(newThought)}>
+            Add thought
+          </button>
+        </>
+      )}
     </ThoughtFrame>
   )
 }
 
-const CreDelSection = styled.section``
-
-const ThoughtFrame = styled.div`
+//const CreDelSection = styled.section``
+const ThoughtsOverview = styled.section`
   display: grid;
-  align-content: center;
   justify-items: center;
-  height: auto;
   background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
   padding: 10px;
   gap: 10px;
-  margin-top: 48px;
-  margin-bottom: 48px;
+`
+
+const ThoughtFrame = styled.section`
+  overflow: scroll;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 `
 const BtnAddThought = styled.button`
   border-radius: 50%;
