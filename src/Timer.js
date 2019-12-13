@@ -110,7 +110,7 @@ const TimerScreenStyled = styled.div`
   align-content: center;
   justify-items: center;
   height: 100%;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  background: #6d7588;
   margin-bottom: 48px;
 `
 const TimerFinishedScreen = styled.div`
@@ -132,8 +132,10 @@ const TimerReset = styled.button`
   margin-top: 80px;
 `
 const TimerFormat = styled.p`
-  font-size: 5em;
+  font-size: 100px;
   color: #e3d9ca;
+  font-family: Helvetica, sans-serif;
+  font-weight: 200;
 `
 const DurationSetStyle = styled.div`
   display: flex;

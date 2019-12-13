@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import TimeIcon from './assets/timer-icon.svg'
-import ConstructorIcon from './assets/construction-icon.svg'
+import TimeIcon from './assets/timer2.svg'
+import ThoughtDiaryIcon from './assets/thought-diary.svg'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
     bottom: 0;
     grid-auto-flow: column;
     grid-template-columns: repeat(4, auto);
-    background: linear-gradient(45deg, #92a5a1 0%, #596c68 100%);
+    background: linear-gradient(45deg, #c4c1bd 0%, #f4f2ee 100%);
   `
   const NavIcon = styled(Link)`
     display: flex;
@@ -31,7 +31,7 @@ export default function Footer() {
         <IconImg src={TimeIcon} alt="" height="30" width="30" />
       </NavIcon>
       <NavIcon to="/constructor">
-        <IconImg src={ConstructorIcon} alt="" height="25" width="25" />
+        <IconImg src={ThoughtDiaryIcon} alt="" height="30" width="30" />
       </NavIcon>
       <NavIcon to="">
         <IconImg src={TimeIcon} alt="" height="30" width="30" />

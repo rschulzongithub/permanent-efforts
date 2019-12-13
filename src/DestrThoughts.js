@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import React, { useState } from 'react'
+import DownArrow from './assets/down-arrow.svg'
 
 export default function DestrThoughts({
   createThought,
@@ -32,37 +33,82 @@ export default function DestrThoughts({
                   <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>
                 </ThoughtEl>
               ) : (
-                <ThoughtEl>{thought.destrThought}</ThoughtEl>
+                <ThoughtEl>
+                  {thought.destrThought} <ArrowDownMenu src={DownArrow} />
+                </ThoughtEl>
               )
             )}
           </ThoughtsOverview>
         </>
       ) : (
-        <>
-          <h3>Formulate your negative thought!</h3>
-          <input
+        <NewThoughtWrapper>
+          <TitleNewThought>Formulate your negative thought!</TitleNewThought>
+          <NewThoughtInput
             onChange={event => setNewThought(event.target.value)}
             value={newThought}
-          ></input>
-          <button onClick={event => onAddThought(newThought)}>
+          ></NewThoughtInput>
+          <BtnSafeNewThought onClick={event => onAddThought(newThought)}>
             Add thought
-          </button>
-        </>
+          </BtnSafeNewThought>
+        </NewThoughtWrapper>
       )}
     </ThoughtFrame>
   )
 }
 
+const ArrowDownMenu = styled.img`
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  right: 10px;
+`
+
+const NewThoughtWrapper = styled.div`
+  display: grid;
+  height: 100%;
+  justify-items: center;
+  align-content: center;
+  gap: 20px;
+`
+const NewThoughtInput = styled.input`
+  border: none;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 1em;
+  color: #6d7588;
+  padding: 20px;
+`
+const BtnSafeNewThought = styled.button`
+  background: #f5a571;
+  height: 50px;
+  width: 300px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 300;
+  font-size: 16px;
+  color: #edeae5;
+`
+
+const TitleNewThought = styled.h3`
+  color: #f4f2ee;
+  font-family: Helvetica, sans-serif;
+  font-weight: 200;
+`
+
 //const CreDelSection = styled.section``
 const ThoughtsOverview = styled.section`
   display: grid;
   justify-items: center;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  background: #6d7588;
   padding: 10px;
   gap: 10px;
 `
 
 const ThoughtFrame = styled.section`
+  background: #6d7588;
   overflow: scroll;
 `
 
@@ -72,10 +118,13 @@ const ButtonWrapper = styled.div`
   width: 100%;
 `
 const BtnAddThought = styled.button`
+  border: none;
   border-radius: 50%;
   height: 50px;
   width: 50px;
   font-size: 20px;
+  background: #f5a571;
+  color: #edeae5;
 `
 const ThoughtEl = styled.div`
   display: flex;
@@ -83,15 +132,13 @@ const ThoughtEl = styled.div`
   align-items: center;
   height: 60px;
   width: 100%;
-  border: 1px solid grey;
-  box-shadow: 1px 1px 5px grey;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  padding: 10px;
-  font-size: 18px;
-  color: #e3d9ca;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #c4c1bd 0%, #f4f2ee 100%);
+  padding: 30px;
+  font-size: 16px;
+  color: #6d7588;
   position: relative;
+  font-family: Helvetica, sans-serif;
 `
 const DeleteBtn = styled.button`
   position: absolute;
@@ -101,6 +148,5 @@ const DeleteBtn = styled.button`
   border: none;
   color: #e3d9ca;
   font-size: bold;
-
   border-bottom-color: transparent;
 `
