@@ -88,7 +88,7 @@ export default function Timer() {
                 alt=""
                 src={PauseBtn}
                 height="100px"
-                width="50px"
+                width="100px"
               ></PlayImgs>
             ) : (
               <PlayImgs
