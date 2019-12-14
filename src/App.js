@@ -15,6 +15,8 @@ function App() {
   const [deleteThought, setDeleteThought] = useState(false)
   const [btnX, setBtnX] = useState(false)
   const [thoughts, setThoughts] = useState(thoughtsData)
+  const [isTimer, setIsTimer] = useState(false)
+  const [isList, setIsList] = useState(false)
 
   return (
     <Router>
@@ -43,7 +45,12 @@ function App() {
               />
             </Route>
           </Switch>
-          <Footer />
+          <Footer
+            isTimer={isTimer}
+            setIsTimer={setIsTimer}
+            isList={isList}
+            setIsList={setIsList}
+          />
         </Grid>
       </AppStyled>
     </Router>

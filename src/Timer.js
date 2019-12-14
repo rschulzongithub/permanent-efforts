@@ -95,7 +95,7 @@ export default function Timer() {
                 alt=""
                 src={PlayBtn}
                 height="100px"
-                width="50px"
+                width="100px"
               ></PlayImgs>
             )}
           </StartButton>
@@ -110,7 +110,7 @@ const TimerScreenStyled = styled.div`
   align-content: center;
   justify-items: center;
   height: 100%;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  background: #6d7588;
   margin-bottom: 48px;
 `
 const TimerFinishedScreen = styled.div`
@@ -126,14 +126,17 @@ const TimerReset = styled.button`
   border: 1px solid #e3d9ca;
   border-radius: 50%;
   color: #e3d9ca;
-  font-size: 0.8em;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  font-size: 1.5em;
+  font-weight: 300;
+  background: #f5a571;
   box-shadow: 1px 1px 30px #e3d9ca;
   margin-top: 80px;
 `
 const TimerFormat = styled.p`
-  font-size: 5em;
+  font-size: 100px;
   color: #e3d9ca;
+  font-family: Helvetica, sans-serif;
+  font-weight: 200;
 `
 const DurationSetStyle = styled.div`
   display: flex;

@@ -6,5 +6,5 @@ export default styled.header`
   width: 100%;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #92a5a1 0%, #596c68 100%);
+  background: linear-gradient(45deg, #c4c1bd 0%, #f4f2ee 100%);
 `
