@@ -95,7 +95,7 @@ export default function Timer() {
                 alt=""
                 src={PlayBtn}
                 height="100px"
-                width="50px"
+                width="100px"
               ></PlayImgs>
             )}
           </StartButton>
@@ -126,8 +126,9 @@ const TimerReset = styled.button`
   border: 1px solid #e3d9ca;
   border-radius: 50%;
   color: #e3d9ca;
-  font-size: 0.8em;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  font-size: 1.5em;
+  font-weight: 300;
+  background: #f5a571;
   box-shadow: 1px 1px 30px #e3d9ca;
   margin-top: 80px;
 `

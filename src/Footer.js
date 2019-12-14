@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import TimeIcon from './assets/timer2.svg'
-import ThoughtDiaryIcon from './assets/thought-diary.svg'
+import TimeIconActive from './assets/footer-icon-timer-orange.svg'
+import TimeIcon from './assets/footer-icon-timer-grey.svg'
+
+import ListIconActive from './assets/footer-icon-List-orange.svg'
+import ListIcon from './assets/footer-icon-List-grey.svg'
+
 import { Link } from 'react-router-dom'
 
-export default function Footer() {
+export default function Footer({ isTimer, setIsTimer, isList, setIsList }) {
   const Navigation = styled.nav`
     display: grid;
     height: 48px;
@@ -24,16 +28,27 @@ export default function Footer() {
   const IconImg = styled.img`
     max-height: 100%;
     max-width: 100%;
+    fill: red;
   `
   return (
     <Navigation>
-      <NavIcon to="/">
-        <IconImg src={TimeIcon} alt="" height="30" width="30" />
+      <NavIcon to="/" onClick={() => regTimer()}>
+        <IconImg
+          src={isTimer ? TimeIconActive : TimeIcon}
+          alt=""
+          height="30"
+          width="30"
+        />
       </NavIcon>
-      <NavIcon to="/constructor">
-        <IconImg src={ThoughtDiaryIcon} alt="" height="30" width="30" />
+      <NavIcon to="/constructor" onClick={() => regList()}>
+        <IconImg
+          src={isList ? ListIconActive : ListIcon}
+          alt=""
+          height="30"
+          width="30"
+        />
       </NavIcon>
-      <NavIcon to="">
+      <NavIcon to="" onClick={regList}>
         <IconImg src={TimeIcon} alt="" height="30" width="30" />
       </NavIcon>
       <NavIcon to="">
@@ -41,4 +56,14 @@ export default function Footer() {
       </NavIcon>
     </Navigation>
   )
+
+  function regTimer(isTimer) {
+    setIsTimer(!isTimer)
+    setIsList(false)
+  }
+
+  function regList(isList) {
+    setIsList(!isList)
+    setIsTimer(false)
+  }
 }

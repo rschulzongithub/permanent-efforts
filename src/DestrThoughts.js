@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import React, { useState } from 'react'
-import DownArrow from './assets/down-arrow.svg'
+import DownArrow from './assets/downarrow-thought-edit.svg'
 
 export default function DestrThoughts({
   createThought,
@@ -34,7 +34,8 @@ export default function DestrThoughts({
                 </ThoughtEl>
               ) : (
                 <ThoughtEl>
-                  {thought.destrThought} <ArrowDownMenu src={DownArrow} />
+                  {thought.destrThought}{' '}
+                  <ArrowDownMenu src={DownArrow} height="50px" width="100px" />
                 </ThoughtEl>
               )
             )}
