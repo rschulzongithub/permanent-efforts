@@ -1,58 +1,42 @@
 [
   {
-    "destrThought": "Ich kann das nicht so gut!",
-    "konstrThought": "Ich will das jetzt lernen!"
-  },
-  {
-    "destrThought": "Ich bin viel langsamer als die anderen!",
-    "konstrThought": "Ich will schneller werden!"
-  },
-  {
-    "destrThought": "Ich weiß nicht was ich will!",
-    "konstrThought": "Ich finde gerade heraus was ich will!"
-  },
-  {
-    "destrThought": "Ich verstehe das nicht!",
-    "konstrThought": "Ich nehme mir mehr Zeit es zu lernen!"
-  },
-  {
-    "destrThought": "Ich werde das nicht schaffen!",
-    "konstrThought": "Ich konzentriere mich auf den aktuell nötigen Schritt!"
-  },
-  {
-    "destrThought": "Ich sollte es jetzt schon wissen!",
-    "konstrThought": "Ich nehme mir die nötige Zeit es zu verstehen!"
-  },
-  {
-    "destrThought": "Ich kann nicht fragen. Sie erwarten von mir, dass ich es schon kann!",
+    "destrThought": "He is always coming late!",
     "konstrThought": "Alle meine Fragen verdiedenen es geklärt zu werden!"
   },
   {
-    "destrThought": "Ich kann das nicht so gut!",
-    "konstrThought": "Ich will das jetzt lernen!"
+    "destrThought": "Am I too old for this/that?",
+    "konstrThought": "What does it take to do it?"
   },
   {
-    "destrThought": "Ich bin viel langsamer als die anderen!",
+    "destrThought": "I am too old to ...!",
+    "konstrThought": "I want to..., so I am giving it a try!"
+  },
+  {
+    "destrThought": "I will never find my true love!",
     "konstrThought": "Ich will schneller werden!"
   },
   {
-    "destrThought": "Ich weiß nicht was ich will!",
+    "destrThought": "I don't know what I want",
     "konstrThought": "Ich finde gerade heraus was ich will!"
   },
   {
-    "destrThought": "Ich verstehe das nicht!",
-    "konstrThought": "Ich nehme mir mehr Zeit es zu lernen!"
+    "destrThought": "Why always me...?",
+    "konstrThought": "What can I do to avoid this?"
   },
   {
-    "destrThought": "Ich werde das nicht schaffen!",
+    "destrThought": "They just have good genes!",
+    "konstrThought": "I am starting to do more exercises!"
+  },
+  {
+    "destrThought": "That's too difficult!",
     "konstrThought": "Ich konzentriere mich auf den aktuell nötigen Schritt!"
   },
   {
-    "destrThought": "Ich sollte es jetzt schon wissen!",
+    "destrThought": "I will not make it right in time!",
     "konstrThought": "Ich nehme mir die nötige Zeit es zu verstehen!"
   },
   {
-    "destrThought": "Ich kann nicht fragen. Sie erwarten von mir, dass ich es schon kann!",
-    "konstrThought": "Alle meine Fragen verdiedenen es geklärt zu werden!"
+    "destrThought": "I am not able to do that!",
+    "konstrThought": "Ich will das jetzt lernen!"
   }
 ]

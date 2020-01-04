@@ -16,7 +16,7 @@ export default function Footer({ isTimer, setIsTimer, isList, setIsList }) {
     position: fixed;
     bottom: 0;
     grid-auto-flow: column;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(2, auto);
     background: linear-gradient(45deg, #c4c1bd 0%, #f4f2ee 100%);
   `
   const NavIcon = styled(Link)`
@@ -28,7 +28,6 @@ export default function Footer({ isTimer, setIsTimer, isList, setIsList }) {
   const IconImg = styled.img`
     max-height: 100%;
     max-width: 100%;
-    fill: red;
   `
   return (
     <Navigation>
@@ -48,12 +47,12 @@ export default function Footer({ isTimer, setIsTimer, isList, setIsList }) {
           width="30"
         />
       </NavIcon>
-      <NavIcon to="" onClick={regList}>
+      {/* {<NavIcon to="" onClick={regList}>
         <IconImg src={TimeIcon} alt="" height="30" width="30" />
       </NavIcon>
       <NavIcon to="">
         <IconImg src={TimeIcon} alt="" height="30" width="30" />
-      </NavIcon>
+      </NavIcon>} */}
     </Navigation>
   )
 

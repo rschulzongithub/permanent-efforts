@@ -8,5 +8,5 @@ export default styled.button`
   border-radius: 50%;
   background: #f5a571;
   box-shadow: 1px 1px 10px #e3d9ca;
-  margin-top: 100px;
+  margin-top: 50px;
 `

@@ -12,9 +12,23 @@ export default function DestrThoughts({
   onAddThought
 }) {
   const [newThought, setNewThought] = useState('')
+  const [collapsed, setCollapsed] = useState(false)
+
+  function toggleCollapsed() {
+    setCollapsed(!collapsed)
+  }
+
+  function renderInputForPositivThought() {
+    return (
+      <>
+        <input placeholder="Enter positiv Thought"></input>
+      </>
+    )
+  }
+
   return (
     <ThoughtFrame>
-      {createThought ? (
+      {!createThought ? (
         <>
           <ThoughtsOverview>
             <ButtonWrapper>
@@ -31,11 +45,18 @@ export default function DestrThoughts({
                 <ThoughtEl>
                   {thought.destrThought}
                   <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>
+                  {renderInputForPositivThought()}
                 </ThoughtEl>
               ) : (
                 <ThoughtEl>
                   {thought.destrThought}{' '}
-                  <ArrowDownMenu src={DownArrow} height="50px" width="100px" />
+                  <ArrowDownMenu
+                    src={DownArrow}
+                    height="50px"
+                    width="100px"
+                    onClick={() => toggleCollapsed()}
+                  />
+                  {renderInputForPositivThought()}
                 </ThoughtEl>
               )
             )}
@@ -128,10 +149,10 @@ const BtnAddThought = styled.button`
   color: #edeae5;
 `
 const ThoughtEl = styled.div`
-  display: flex;
+  display: inline-grid;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  height: auto;
   width: 100%;
   border-radius: 10px;
   background: linear-gradient(45deg, #c4c1bd 0%, #f4f2ee 100%);

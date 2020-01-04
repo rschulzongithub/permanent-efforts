@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import StartButton from './StartButton'
-import PlayBtn from './assets/icons8-spielen-100.png'
-import PauseBtn from './assets/icons8-pause-100.png'
+import PlayBtn from './assets/timer-play-btn.svg'
+import PauseBtn from './assets/timer-pause-btn.svg'
 import soundPath from './assets/dong-1.mp3'
 
 export default function Timer() {
@@ -111,7 +111,7 @@ const TimerScreenStyled = styled.div`
   justify-items: center;
   height: 100%;
   background: #6d7588;
-  margin-bottom: 48px;
+  margin-bottom: 10px;
 `
 const TimerFinishedScreen = styled.div`
   font-size: 3em;
@@ -146,6 +146,7 @@ const TimerDuration = styled.input`
   height: 50px;
   width: 50px;
   font-size: 1.5em;
+  border: none;
 `
 const TimeSubmitBtn = styled.button`
   height: 50px;
@@ -154,6 +155,6 @@ const TimeSubmitBtn = styled.button`
 `
 
 const PlayImgs = styled.img`
-  height: 50px;
+  height: 65px;
   width: 50px;
 `

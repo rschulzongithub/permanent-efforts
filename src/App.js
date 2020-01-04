@@ -11,7 +11,7 @@ import Timer from './Timer'
 import thoughtsData from './thoughts.json'
 
 function App() {
-  const [createThought, setCreateThought] = useState(true)
+  const [createThought, setCreateThought] = useState(false)
   const [deleteThought, setDeleteThought] = useState(false)
   const [btnX, setBtnX] = useState(false)
   const [thoughts, setThoughts] = useState(thoughtsData)
