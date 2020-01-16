@@ -12,20 +12,28 @@ export default function DestrThoughts({
   onAddThought,
   collapsed,
   setCollapsed,
-  handleClick
+  handleClick,
+  onSaveThought
 }) {
   const [newThought, setNewThought] = useState('')
+  const [newConstructiveThought, setNewConstructiveThought] = useState('')
 
   function renderInputForPositivThought(index) {
     return (
       <>
-        <input placeholder="Enter positiv Thought"></input>
+        <NewThoughtInput
+          placeholder="Enter positiv Thought"
+          onChange={event => setNewConstructiveThought(event.target.value)}
+        ></NewThoughtInput>
         {thoughts[index].konstrThought}
         {/* {thoughts.map((thought, index) => (
           <ThoughtEl key={index}>{thought.konstrThought}</ThoughtEl>
         ))} */}
         <p>Something else 2</p>
         <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>{' '}
+        <button onClick={() => onSaveThought(index, newConstructiveThought)}>
+          Save Thought!
+        </button>
       </>
     )
   }

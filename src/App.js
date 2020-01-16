@@ -15,7 +15,7 @@ function App() {
   const [deleteThought, setDeleteThought] = useState(false)
   const [btnX, setBtnX] = useState(false)
   const [thoughts, setThoughts] = useState(thoughtsData)
-  const [isTimer, setIsTimer] = useState(false)
+  const [isTimer, setIsTimer] = useState(true)
   const [isList, setIsList] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
 
@@ -37,6 +37,9 @@ function App() {
                   setThoughts([{ destrThought: text }, ...thoughts])
                   setCreateThought(!createThought)
                 }}
+                onSaveThought={(index, constructThought) =>
+                  saveThought(index, constructThought)
+                }
                 createThought={createThought}
                 deleteThought={deleteThought}
                 thoughts={thoughts}
@@ -69,6 +72,15 @@ function App() {
     setThoughts([
       ...thoughts.slice(0, index),
       { ...thought, collapsed: !thought.collapsed },
+      ...thoughts.slice(index + 1)
+    ])
+  }
+
+  function saveThought(index, constructThought) {
+    const thought = thoughts[index]
+    setThoughts([
+      ...thoughts.slice(0, index),
+      { ...thought, konstrThought: constructThought },
       ...thoughts.slice(index + 1)
     ])
   }
