@@ -1,42 +1,52 @@
 [
   {
     "destrThought": "He is always coming late!",
-    "konstrThought": "Alle meine Fragen verdiedenen es geklärt zu werden!"
+    "konstrThought": "Alle meine Fragen verdiedenen es geklärt zu werden!",
+    "collapsed": false
   },
   {
     "destrThought": "Am I too old for this/that?",
-    "konstrThought": "What does it take to do it?"
+    "konstrThought": "What does it take to do it?",
+    "collapsed": false
   },
   {
     "destrThought": "I am too old to ...!",
-    "konstrThought": "I want to..., so I am giving it a try!"
+    "konstrThought": "I want to..., so I am giving it a try!",
+    "collapsed": false
   },
   {
     "destrThought": "I will never find my true love!",
-    "konstrThought": "Ich will schneller werden!"
+    "konstrThought": "Ich will schneller werden!",
+    "collapsed": false
   },
   {
     "destrThought": "I don't know what I want",
-    "konstrThought": "Ich finde gerade heraus was ich will!"
+    "konstrThought": "Ich finde gerade heraus was ich will!",
+    "collapsed": false
   },
   {
     "destrThought": "Why always me...?",
-    "konstrThought": "What can I do to avoid this?"
+    "konstrThought": "What can I do to avoid this?",
+    "collapsed": false
   },
   {
     "destrThought": "They just have good genes!",
-    "konstrThought": "I am starting to do more exercises!"
+    "konstrThought": "I am starting to do more exercises!",
+    "collapsed": false
   },
   {
     "destrThought": "That's too difficult!",
-    "konstrThought": "Ich konzentriere mich auf den aktuell nötigen Schritt!"
+    "konstrThought": "Ich konzentriere mich auf den aktuell nötigen Schritt!",
+    "collapsed": false
   },
   {
     "destrThought": "I will not make it right in time!",
-    "konstrThought": "Ich nehme mir die nötige Zeit es zu verstehen!"
+    "konstrThought": "Ich nehme mir die nötige Zeit es zu verstehen!",
+    "collapsed": false
   },
   {
     "destrThought": "I am not able to do that!",
-    "konstrThought": "Ich will das jetzt lernen!"
+    "konstrThought": "Ich will das jetzt lernen!",
+    "collapsed": false
   }
 ]

@@ -9,19 +9,19 @@ export default function DestrThoughts({
   thoughts,
   setCreateThought,
   setDeleteThought,
-  onAddThought
+  onAddThought,
+  collapsed,
+  setCollapsed,
+  handleClick
 }) {
   const [newThought, setNewThought] = useState('')
-  const [collapsed, setCollapsed] = useState(false)
-
-  function toggleCollapsed() {
-    setCollapsed(!collapsed)
-  }
 
   function renderInputForPositivThought() {
     return (
       <>
         <input placeholder="Enter positiv Thought"></input>
+        <p>Something else 1</p>
+        <p>Something else 2</p>
       </>
     )
   }
@@ -42,21 +42,21 @@ export default function DestrThoughts({
 
             {thoughts.map((thought, index) =>
               deleteThought ? (
-                <ThoughtEl>
+                <ThoughtEl key={index}>
                   {thought.destrThought}
-                  <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>
-                  {renderInputForPositivThought()}
+                  <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>{' '}
                 </ThoughtEl>
               ) : (
-                <ThoughtEl>
+                <ThoughtEl key={index}>
                   {thought.destrThought}{' '}
                   <ArrowDownMenu
+                    key={index}
                     src={DownArrow}
                     height="50px"
                     width="100px"
-                    onClick={() => toggleCollapsed()}
+                    onClick={() => handleClick(index)}
                   />
-                  {renderInputForPositivThought()}
+                  {thought.collapsed && renderInputForPositivThought(index)}
                 </ThoughtEl>
               )
             )}

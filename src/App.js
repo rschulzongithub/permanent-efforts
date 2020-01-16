@@ -17,6 +17,7 @@ function App() {
   const [thoughts, setThoughts] = useState(thoughtsData)
   const [isTimer, setIsTimer] = useState(false)
   const [isList, setIsList] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
 
   return (
     <Router>
@@ -42,6 +43,9 @@ function App() {
                 setBtnX={setBtnX}
                 change={index => change(index)}
                 btnX={btnX}
+                collapsed={collapsed}
+                setCollapsed={setCollapsed}
+                handleClick={index => toggleCollapsed(index)}
               />
             </Route>
           </Switch>
@@ -58,6 +62,15 @@ function App() {
 
   function change(indexToDelete) {
     setThoughts(thoughts.filter((thought, index) => index !== indexToDelete))
+  }
+
+  function toggleCollapsed(index) {
+    const thought = thoughts[index]
+    setThoughts([
+      ...thoughts.slice(0, index),
+      { ...thought, collapsed: !thought.collapsed },
+      ...thoughts.slice(index + 1)
+    ])
   }
 }
 
