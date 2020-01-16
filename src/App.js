@@ -37,9 +37,9 @@ function App() {
                   setThoughts([{ destrThought: text }, ...thoughts])
                   setCreateThought(!createThought)
                 }}
-                onSaveThought={(index, constructThought) =>
-                  saveThought(index, constructThought)
-                }
+                onButtonClick={(index, saveConstrThought) => {
+                  addConstructiveThought(index, saveConstrThought)
+                }}
                 createThought={createThought}
                 deleteThought={deleteThought}
                 thoughts={thoughts}
@@ -76,11 +76,11 @@ function App() {
     ])
   }
 
-  function saveThought(index, constructThought) {
+  function addConstructiveThought(index, saveConstrThought) {
     const thought = thoughts[index]
     setThoughts([
       ...thoughts.slice(0, index),
-      { ...thought, konstrThought: constructThought },
+      { ...thought, konstrThought: saveConstrThought },
       ...thoughts.slice(index + 1)
     ])
   }

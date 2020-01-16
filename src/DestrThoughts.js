@@ -13,7 +13,7 @@ export default function DestrThoughts({
   collapsed,
   setCollapsed,
   handleClick,
-  onSaveThought
+  onButtonClick
 }) {
   const [newThought, setNewThought] = useState('')
   const [newConstructiveThought, setNewConstructiveThought] = useState('')
@@ -31,8 +31,8 @@ export default function DestrThoughts({
         ))} */}
         <p>Something else 2</p>
         <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>{' '}
-        <button onClick={() => onSaveThought(index, newConstructiveThought)}>
-          Save Thought!
+        <button onClick={() => onButtonClick(index, newConstructiveThought)}>
+          SAVE THE THOUGHT!!!
         </button>
       </>
     )
