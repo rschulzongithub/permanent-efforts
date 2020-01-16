@@ -16,12 +16,16 @@ export default function DestrThoughts({
 }) {
   const [newThought, setNewThought] = useState('')
 
-  function renderInputForPositivThought() {
+  function renderInputForPositivThought(index) {
     return (
       <>
         <input placeholder="Enter positiv Thought"></input>
-        <p>Something else 1</p>
+        {thoughts[index].konstrThought}
+        {/* {thoughts.map((thought, index) => (
+          <ThoughtEl key={index}>{thought.konstrThought}</ThoughtEl>
+        ))} */}
         <p>Something else 2</p>
+        <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>{' '}
       </>
     )
   }
@@ -49,13 +53,14 @@ export default function DestrThoughts({
               ) : (
                 <ThoughtEl key={index}>
                   {thought.destrThought}{' '}
-                  <ArrowDownMenu
-                    key={index}
-                    src={DownArrow}
-                    height="50px"
-                    width="100px"
-                    onClick={() => handleClick(index)}
-                  />
+                  <ArrowDownBtn key={index} onClick={() => handleClick(index)}>
+                    <ArrowDownImg
+                      alt=""
+                      src={DownArrow}
+                      height="50px"
+                      width="100px"
+                    />
+                  </ArrowDownBtn>
                   {thought.collapsed && renderInputForPositivThought(index)}
                 </ThoughtEl>
               )
@@ -78,9 +83,16 @@ export default function DestrThoughts({
   )
 }
 
-const ArrowDownMenu = styled.img`
+const ArrowDownBtn = styled.button`
   position: absolute;
-  height: 20px;
+  height: 50px;
+  width: 50px;
+  right: 10px;
+  border-radius: 50%;
+`
+
+const ArrowDownImg = styled.img`
+  height: 30px;
   width: 20px;
   right: 10px;
 `
