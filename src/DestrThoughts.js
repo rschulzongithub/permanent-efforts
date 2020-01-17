@@ -10,8 +10,6 @@ export default function DestrThoughts({
   setCreateThought,
   setDeleteThought,
   onAddThought,
-  collapsed,
-  setCollapsed,
   handleClick,
   onButtonClick
 }) {
@@ -26,14 +24,12 @@ export default function DestrThoughts({
           onChange={event => setNewConstructiveThought(event.target.value)}
         ></NewThoughtInput>
         {thoughts[index].konstrThought}
-        {/* {thoughts.map((thought, index) => (
-          <ThoughtEl key={index}>{thought.konstrThought}</ThoughtEl>
-        ))} */}
-        <p>Something else 2</p>
         <DeleteBtn onClick={() => change(index)}>X</DeleteBtn>{' '}
-        <button onClick={() => onButtonClick(index, newConstructiveThought)}>
-          SAVE THE THOUGHT!!!
-        </button>
+        <SaveThoughtBtn
+          onClick={() => onButtonClick(index, newConstructiveThought)}
+        >
+          SAVE!!!
+        </SaveThoughtBtn>
       </>
     )
   }
@@ -45,10 +41,10 @@ export default function DestrThoughts({
           <ThoughtsOverview>
             <ButtonWrapper>
               <BtnAddThought onClick={() => setCreateThought(!createThought)}>
-                +
+                Add New Thought
               </BtnAddThought>
               <BtnAddThought onClick={() => setDeleteThought(!deleteThought)}>
-                -
+                Delete Thoughts
               </BtnAddThought>
             </ButtonWrapper>
 
@@ -97,6 +93,13 @@ const ArrowDownBtn = styled.button`
   width: 50px;
   right: 10px;
   border-radius: 50%;
+  border: none;
+  background: linear-gradient(45deg, #c4c1bd 0%, #f4f2ee 100%);
+`
+
+const SaveThoughtBtn = styled.button`
+  background: #f5a571;
+  color: #edeae5;
 `
 
 const ArrowDownImg = styled.img`
@@ -161,10 +164,10 @@ const ButtonWrapper = styled.div`
 `
 const BtnAddThought = styled.button`
   border: none;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  font-size: 20px;
+  border-radius: 20px;
+  height: 60px;
+  width: 120px;
+  font-size: 16px;
   background: #f5a571;
   color: #edeae5;
 `
@@ -183,12 +186,15 @@ const ThoughtEl = styled.div`
   font-family: Helvetica, sans-serif;
 `
 const DeleteBtn = styled.button`
+  height: 20px;
+  width: 30px;
   position: absolute;
   right: 0px;
   top: 0px;
-  background: linear-gradient(45deg, #7c7575 0%, #403f48 100%);
+  background: linear-gradient(45deg, #f5a571 0%, transparent 100%);
   border: none;
-  color: #e3d9ca;
+  border-bottom-left-radius: 10px;
+  color: #6d7588;
   font-size: bold;
   border-bottom-color: transparent;
 `
