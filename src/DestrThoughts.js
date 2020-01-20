@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro'
 import React, { useState } from 'react'
 import DownArrow from './assets/downarrow-thought-edit.svg'
-import { Link } from 'react-router-dom'
 
 export default function DestrThoughts({
   createThought,
@@ -39,9 +38,6 @@ export default function DestrThoughts({
                 </ThoughtEl>
               ) : (
                 <ThoughtEl key={index}>
-                  <Link to="/">
-                    <button>Timer</button>
-                  </Link>
                   {!thought.collapsed && thought.destrThought}{' '}
                   {thought.collapsed && (
                     <>
